@@ -3,7 +3,7 @@ module Railings
     MAPPINGS   = YAML::load_file Rails.root.join 'config', 'domains.yml' rescue false
     MAPPINGS ||= { }
 
-    def const_missing domain
+    def self.const_missing domain
       Class.new do
         @domain = domain.downcase.to_s
         class << self
