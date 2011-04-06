@@ -12,7 +12,7 @@ module Railings
       end
       
       def matches? request
-        subdomain == request.subdomain
+        self == request.subdomain
       end
     end
     
