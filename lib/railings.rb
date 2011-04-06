@@ -2,6 +2,7 @@ module Railings
   autoload :Domains, 'railings/domains'
   autoload :Filterable, 'railings/filterable'
   autoload :LayoutHelper, 'railings/layout_helper'
+  autoload :Modules, 'railings/modules'
   autoload :RoutingHelper, 'railings/routing_helper'
 
   class Railtie < Rails::Railtie
@@ -12,8 +13,9 @@ module Railings
       ApplicationController.send :helper, LayoutHelper
     end
     
-    initializer 'railings.setup_routing_domains' do
+    initializer 'railings.setup_routing' do
       Rails::application::class::parent.const_set 'Domains', Domains
+      Rails::application::class::parent.const_set 'Modules', Modules
     end
   end
 end
